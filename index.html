@@ -5,14 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HWM 102 - Hydrology CBT Exam</title>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-      script.async = true;
-      document.head.appendChild(script);
-    });
-  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
@@ -37,11 +29,11 @@
       max-width: 800px;
       text-align: center;
       position: relative;
-      min-height: 700px;
+      min-height: 650px;
     }
 
-    h1 { color: #1e3c72; font-size: 2.4rem; margin-bottom: 10px; }
-    .subtitle { color: #2a5298; font-size: 1.1rem; margin-bottom: 20px; }
+    h1 { color: #1e3c72; font-size: 2.2rem; margin-bottom: 8px; }
+    .subtitle { color: #2a5298; font-size: 1.1rem; margin-bottom: 15px; }
 
     .progress-bar {
       height: 8px;
@@ -54,7 +46,7 @@
 
     .footer {
       position: absolute;
-      bottom: 10px;
+      bottom: 15px;
       left: 0;
       right: 0;
       text-align: center;
@@ -65,14 +57,13 @@
 
     #start-screen input {
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       padding: 16px;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       border: 2px solid #4a7bb7;
       border-radius: 12px;
       margin: 20px 0;
     }
-    #start-screen input:focus { border-color: #1e3c72; outline: none; }
 
     .btn {
       background: #1e3c72;
@@ -82,13 +73,12 @@
       font-size: 1.2rem;
       border-radius: 50px;
       cursor: pointer;
-      transition: all 0.3s;
       margin: 10px;
     }
     .btn:hover { background: #142850; transform: translateY(-2px); }
 
     .timer {
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-weight: bold;
       padding: 10px 30px;
       border-radius: 16px;
@@ -101,19 +91,18 @@
     .timer.red { background: #ffebee; color: #c0392b; animation: blink 1s infinite alternate; }
     @keyframes blink { from { opacity: 1; } to { opacity: 0.7; } }
 
-    .question-num { font-size: 1.4rem; font-weight: 600; color: #1e3c72; margin: 10px 0; }
+    .question-num { font-size: 1.3rem; font-weight: 600; color: #1e3c72; margin: 10px 0; }
+    .question { font-size: 1.3rem; line-height: 1.5; margin: 20px 0; color: #1e3c72; }
 
-    .question { font-size: 1.35rem; line-height: 1.55; margin: 20px 0; color: #1e3c72; }
-
-    .options { display: flex; flex-direction: column; gap: 14px; margin: 25px 0; }
+    .options { display: flex; flex-direction: column; gap: 12px; margin: 25px 0; }
     .option {
       background: #f0f5ff;
       border: 2px solid #c2d9ff;
-      padding: 18px 22px;
+      padding: 16px 20px;
       border-radius: 12px;
       text-align: left;
       cursor: pointer;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       transition: all 0.25s;
     }
     .option:hover { background: #e0edff; border-color: #4a7bb7; }
@@ -122,21 +111,16 @@
     .nav-buttons { display: flex; justify-content: space-between; margin: 20px 0; }
 
     #result { display: none; }
-    .score { font-size: 3.8rem; font-weight: 700; margin: 25px 0; }
+    .score { font-size: 3.5rem; font-weight: 700; margin: 20px 0; }
     .good { color: #27ae60; }
     .average { color: #f39c12; }
     .poor { color: #e74c3c; }
 
-    .result-actions button { margin: 15px; }
-
-    #corrections { display: none; margin-top: 30px; text-align: left; max-height: 600px; overflow-y: auto; padding: 20px; background: #f8fbff; border-radius: 16px; }
-    .corr-question { margin: 25px 0; padding-bottom: 15px; border-bottom: 1px solid #ddd; }
-    .corr-question strong { color: #1e3c72; }
+    #corrections { display: none; margin-top: 30px; text-align: left; max-height: 550px; overflow-y: auto; padding: 20px; background: #f8fbff; border-radius: 16px; }
+    .corr-question { margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #ddd; }
     .corr-option.correct { background: #d5f5e3; border-color: #27ae60; font-weight: bold; }
     .corr-option.wrong { background: #fadbd8; border-color: #e74c3c; font-weight: bold; }
     .corr-option.unanswered { opacity: 0.6; border-style: dashed; }
-
-    #quote { font-style: italic; color: #555; margin-top: 20px; font-size: 1.1rem; }
   </style>
 </head>
 <body>
@@ -146,7 +130,7 @@
   <div id="start-screen">
     <h1>HWM 102 CBT EXAM</h1>
     <p class="subtitle">Hydrology and Water Resources Management</p>
-    <p style="font-size:1.2rem; margin:15px 0;">40 Questions • 15 Minutes</p>
+    <p style="font-size:1.2rem; margin:15px 0;">35 Questions • 15 Minutes</p>
     <input type="text" id="candidateName" placeholder="Enter your Full Name" required autofocus />
     <button class="btn" id="startBtn">Start Exam</button>
     <div class="footer">Built by <strong>VICTOR ARTISTIC DESIGN</strong></div>
@@ -184,8 +168,9 @@
 </div>
 
 <script>
-// 40 hardest Hydrology questions
-const questions = [{q: "Hydrology is the science that deals with the ______ of water on earth.", opts: ["A. Transportation", "B. Distribution and circulation", "C. Heating", "D. Storage"], correct: 1},
+// 35 hardest Hydrology questions
+const questions = [
+  {q: "Hydrology is the science that deals with the ______ of water on earth.", opts: ["A. Transportation", "B. Distribution and circulation", "C. Heating", "D. Storage"], correct: 1},
   {q: "Hydrology is concerned with the transportation of water through:", opts: ["A. Only the air and ground surface", "B. Solely the strata of the earth", "C. The air alone", "D. The air, over the ground surface, and through the strata of the earth"], correct: 3},
   {q: "The domain of hydrology embraces the full life history of ______ on earth.", opts: ["A. Soil", "B. Water", "C. Plants", "D. Minerals"], correct: 1},
   {q: "Hydrology is an ______ science.", opts: ["A. Independent", "B. Interdisciplinary", "C. Political", "D. Agricultural"], correct: 1},
@@ -202,14 +187,9 @@ const questions = [{q: "Hydrology is the science that deals with the ______ of w
   {q: "Interception is defined as:", opts: ["A. The part of rainfall that is intercepted by the earth surface which eventually evaporates", "B. Only the water that reaches the stream channel directly", "C. The downward flow of water through the zone of aeration", "D. The maximum rate at which rain water can be absorbed by soil"], correct: 0},
   {q: "Through rainfall is:", opts: ["A. The part of precipitation that reaches the ground directly through spaces in it and is a drip from leaves and stems", "B. The part of precipitation that has canopies and runs down the stems", "C. The origin of water that joins the stream channel after days or weeks", "D. The maximum rate at which rain water can be absorbed by soil"], correct: 0},
   {q: "How many factors control interception loss according to the notes?", opts: ["A. One", "B. Two (Precipitation and Vegetative cover)", "C. Three", "D. Five"], correct: 1},
-  {q: "Factors influencing vegetative covers include:", opts: ["A. Only rainfall intensity and duration", "B. Only wind and evaporating conditions", "C. Morphology and foliage characteristics, density of stands age", "D. Only land use and type of soil"], correct: 2},
   {q: "Infiltration capacity is defined as:", opts: ["A. The unit of rain water that passes into the ground surface in unit time", "B. The part of precipitation that drips from leaves", "C. The water that reaches the stream after percolating", "D. A maximum rate at which rain water can be absorbed by a soil in a given condition"], correct: 3},
-  {q: "Precipitation is considered a meteorological concept when:", opts: ["A. It has reached the ground", "B. It has not reached the ground", "C. It is only in liquid form", "D. It is already on the ground"], correct: 1}
-];// Continue with the remaining 20 questions + full JavaScript logic
-const remainingQuestions = [
+  {q: "Precipitation is considered a meteorological concept when:", opts: ["A. It has reached the ground", "B. It has not reached the ground", "C. It is only in liquid form", "D. It is already on the ground"], correct: 1},
   {q: "When precipitation reaches the ground, it becomes:", opts: ["A. A meteorological concept only", "B. A Hydrological concept", "C. Insignificant for water cycle", "D. Only convective precipitation"], correct: 1},
-  {q: "Solid forms of precipitation (except hail) do not occur in the tropics.", opts: ["A. True statement in the notes", "B. False statement", "C. Only in cold deserts", "D. Always more important than rain"], correct: 0},
-  {q: "In certain environments, dew, frost, and glace can be important for:", opts: ["A. Only hail formation", "B. Only convective precipitation", "C. Only orographic precipitation", "D. Crop growth"], correct: 3},
   {q: "Accurate Hydrological data is essential for:", opts: ["A. Only agricultural planning", "B. Water resources management, flood reduction and environmental monitoring", "C. Only space research", "D. Only political decision-making"], correct: 1},
   {q: "One of the challenges in Hydrological data collection is:", opts: ["A. Excessive funding", "B. Technology limitation and adapting to climate change", "C. Too much political will", "D. Surplus of data"], correct: 1},
   {q: "Gender-disaggregated data is important because it:", opts: ["A. Reduces paperwork", "B. Helps understand differences in access and responsibility for water between sexes", "C. Is only used for statistics courses", "D. Replaces community consultations"], correct: 1},
@@ -218,18 +198,13 @@ const remainingQuestions = [
   {q: "A common challenge to implementing gender policies is:", opts: ["A. Excessive funding", "B. Deep-rooted sociocultural norms that limit women’s participation", "C. Too much political will", "D. Surplus of sex-disaggregated data"], correct: 1},
   {q: "The study of oceans is called ______.", opts: ["A. Limnology", "B. Oceanography", "C. Cryology", "D. Agronomy"], correct: 1},
   {q: "The study of lakes is known as ______.", opts: ["A. Limnology", "B. Meteorology", "C. Potamology", "D. Climatology"], correct: 0},
-  {q: "The study of streams is called ______.", opts: ["A. Potamology", "B. Cryology", "C. Agronomy", "D. Hydroeconomic"], correct: 0},
   {q: "The movement of water through the air is studied in ______.", opts: ["A. Meteorology", "B. Sociology", "C. Philosophy", "D. Politics"], correct: 0},
   {q: "Hydrology helps in the control of ______.", opts: ["A. Flood", "B. Wind", "C. Fire", "D. Heat"], correct: 0},
   {q: "Water plays an important role in ______ preservation.", opts: ["A. Ecosystem", "B. Buildings", "C. Roads", "D. Vehicles"], correct: 0},
   {q: "Water is used in industry for ______.", opts: ["A. Cooking engines", "B. Food preservation", "C. Sanitation", "D. All of the above"], correct: 3},
   {q: "Hydrology helps in ______ control in rivers.", opts: ["A. Sand", "B. Erosion and sediment", "C. Rain", "D. Air"], correct: 1},
-  {q: "The most remarkable substance on earth according to hydrology is ______.", opts: ["A. Air", "B. Soil", "C. Water", "D. Fire"], correct: 2},
-  {q: "The study of ice and snow is called ______.", opts: ["A. Oceanography", "B. Cryology", "C. Silviculture", "D. Agronomy"], correct: 1},
-  {q: "Water is essential for ______ watering.", opts: ["A. Livestock", "B. Machines", "C. Buildings", "D. Roads"], correct: 0}
+  {q: "The most remarkable substance on earth according to hydrology is ______.", opts: ["A. Air", "B. Soil", "C. Water", "D. Fire"], correct: 2}
 ];
-
-questions.push(...remainingQuestions);
 
 let userAnswers = new Array(questions.length).fill(-1);
 let current = 0;
@@ -295,7 +270,7 @@ function startTimer() {
 
 function loadQuestion() {
   const q = questions[current];
-  qNum.textContent = `Question ${current + 1} of 40`;
+  qNum.textContent = `Question ${current + 1} of 35`;
   questionText.innerHTML = q.q;
   optionsDiv.innerHTML = "";
 
@@ -313,16 +288,16 @@ function loadQuestion() {
   });
 
   prevBtn.disabled = current === 0;
-  nextBtn.textContent = current === 39 ? "Submit Exam" : "Next →";
+  nextBtn.textContent = current === 34 ? "Submit Exam" : "Next →";
 
-  const progress = ((current + 1) / 40) * 100;
+  const progress = ((current + 1) / 35) * 100;
   progressFill.style.width = progress + "%";
 }
 
 prevBtn.onclick = () => { if (current > 0) { current--; loadQuestion(); } };
 
 nextBtn.onclick = () => {
-  if (current < 39) {
+  if (current < 34) {
     current++;
     loadQuestion();
   } else {
@@ -340,13 +315,13 @@ function submitExam() {
   let score = 0;
   userAnswers.forEach((ans, i) => { if (ans === questions[i].correct) score++; });
 
-  const percent = Math.round((score / 40) * 100);
+  const percent = Math.round((score / 35) * 100);
   const msg = percent >= 80 ? "Outstanding Performance! 🌟" :
               percent >= 50 ? "Good Job! Keep Practicing 👍" :
               "More Effort Needed 💪 You Can Do Better!";
 
   document.getElementById("resultName").textContent = candidate;
-  document.getElementById("scoreText").textContent = `\( {score} / 40 ( \){percent}%)`;
+  document.getElementById("scoreText").textContent = `\( {score} / 35 ( \){percent}%)`;
   document.getElementById("scoreText").className = "score " + (percent >= 80 ? "good" : percent >= 50 ? "average" : "poor");
   document.getElementById("message").textContent = msg;
 
@@ -362,7 +337,7 @@ function submitExam() {
   document.getElementById("timeUsed").textContent = `${usedMin} min ${usedSec} sec`;
 
   document.getElementById("copyBtn").onclick = () => {
-    const text = `HWM 102 HYDROLOGY CBT RESULT\n\nCandidate: ${candidate}\nScore: \( {score}/40 ( \){percent}%)\nTime Used: ${usedMin} min \( {usedSec} sec\n\n \){msg}\n\n"${randomQuote}"\n\nBuilt by VICTOR ARTISTIC DESIGN`;
+    const text = `HWM 102 HYDROLOGY CBT RESULT\n\nCandidate: ${candidate}\nScore: \( {score}/35 ( \){percent}%)\nTime Used: ${usedMin} min \( {usedSec} sec\n\n \){msg}\n\n"${randomQuote}"\n\nBuilt by VICTOR ARTISTIC DESIGN`;
     navigator.clipboard.writeText(text).then(() => alert("Results copied to clipboard!"));
   };
 
@@ -407,4 +382,4 @@ function showCorrections() {
 }
 </script>
 </body>
-</html>
+      </html>
